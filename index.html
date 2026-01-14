@@ -1,0 +1,941 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Khan Bridal Dubai — Online Collection</title>
+  <meta name="description" content="Shop bridal gowns. Order via Instagram DM or WhatsApp." />
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#111827;
+      --muted:#6b7280;
+      --line:#e5e7eb;
+      --card:#f9fafb;
+      --accent:#111827;
+      --shadow: 0 10px 25px rgba(17,24,39,.08);
+      --radius:18px;
+      --max:1160px;
+      --pad:18px;
+      --font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:var(--font);
+      color:var(--text);
+      background:var(--bg);
+      line-height:1.4;
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 var(--pad)}
+    .topbar{
+      position:sticky; top:0; z-index:20;
+      background:rgba(255,255,255,.86);
+      backdrop-filter: blur(10px);
+      border-bottom:1px solid var(--line);
+    }
+    header{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0;
+      gap:14px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:700; letter-spacing:.2px;
+    }
+    .logo-img{
+      width:36px;
+      height:36px;
+      border-radius:12px;
+      object-fit:cover;
+      display:block;
+      border:1px solid var(--line);
+      background:#fff;
+    }
+    nav{display:flex; gap:18px; align-items:center; color:var(--muted); font-size:14px}
+    nav a:hover{color:var(--text)}
+    .cta-row{display:flex; gap:10px; align-items:center}
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:8px;
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:#fff;
+      font-weight:600;
+      font-size:14px;
+      cursor:pointer;
+      transition:.15s ease;
+      white-space:nowrap;
+    }
+    .btn:hover{transform: translateY(-1px); box-shadow: var(--shadow)}
+    .btn.primary{
+      background:var(--accent);
+      border-color:var(--accent);
+      color:#fff;
+    }
+
+    .hero{ padding:46px 0 18px; }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:22px;
+      align-items:stretch;
+    }
+    .hero-card{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      padding:26px;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+    .kicker{color:var(--muted); font-weight:800; font-size:13px; letter-spacing:.12em; text-transform:uppercase}
+    h1{margin:10px 0 10px; font-size:44px; line-height:1.05}
+    .lead{color:var(--muted); font-size:16px; margin:0 0 18px}
+    .badges{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px}
+    .badge{
+      border:1px solid var(--line);
+      background:var(--card);
+      padding:8px 10px;
+      border-radius:999px;
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    /* HERO image = 4x3 (as requested) */
+    .hero-media{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      overflow:hidden;
+      background: linear-gradient(135deg, #f3f4f6, #fff);
+      box-shadow: var(--shadow);
+      position:relative;
+      aspect-ratio: 4 / 3;
+      min-height:0;
+    }
+    .hero-media img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+    .media-overlay{
+      position:absolute; inset:auto 14px 14px 14px;
+      background:rgba(255,255,255,.92);
+      border:1px solid var(--line);
+      border-radius: 16px;
+      padding:12px 12px;
+      display:flex; justify-content:space-between; align-items:center; gap:10px;
+    }
+    .mini{font-size:13px; color:var(--muted)}
+    .mini strong{color:var(--text)}
+    .section{padding:22px 0}
+    .section-title{
+      display:flex; justify-content:space-between; align-items:flex-end; gap:12px;
+      margin:10px 0 14px;
+    }
+    .section-title h2{margin:0; font-size:24px}
+    .section-title p{margin:0; color:var(--muted); font-size:14px}
+
+    .filters{
+      display:flex; gap:10px; flex-wrap:wrap;
+      padding:10px;
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background:#fff;
+    }
+    .input, select{
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:10px 12px;
+      font-size:14px;
+      outline:none;
+      background:#fff;
+    }
+    .input{min-width:240px}
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:16px;
+      margin-top:14px;
+    }
+    .card{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      overflow:hidden;
+      background:#fff;
+      transition:.15s ease;
+    }
+    .card:hover{transform: translateY(-2px); box-shadow: var(--shadow)}
+    .card-body{padding:14px}
+    .card-top{display:flex; justify-content:space-between; gap:10px; align-items:flex-start}
+    .name{font-weight:900; letter-spacing:.06em}
+    .price{font-weight:900}
+    .meta{color:var(--muted); font-size:13px; margin-top:6px}
+    .actions{ display:flex; gap:10px; margin-top:12px; flex-wrap:wrap; }
+    .pill{
+      border:1px solid var(--line);
+      background:var(--card);
+      border-radius:999px;
+      padding:8px 10px;
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    /* How-to text styling (remove heavy bold, only titles bold) */
+    .how{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    .how .step{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      padding:16px;
+      background:#fff;
+    }
+    .step-title{font-weight:800; margin-bottom:6px}
+    .step-text{font-weight:400; color:var(--muted)}
+    .em{font-weight:700; color:var(--text)}
+
+    .footer{
+      border-top:1px solid var(--line);
+      margin-top:26px;
+      padding:18px 0 28px;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    /* ===== Product slider (kept 3x4 for gowns photos) ===== */
+    .slider{
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+      background:#f3f4f6;
+    }
+    .slides{
+      display:flex;
+      transition: transform 0.4s ease;
+      will-change: transform;
+    }
+    .slide{
+      min-width:100%;
+      aspect-ratio: 3 / 4;
+      background:#f3f4f6;
+    }
+    .slide img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      background:#f3f4f6;
+    }
+    .nav{
+      position:absolute;
+      top:50%;
+      transform: translateY(-50%);
+      width:36px;
+      height:36px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.5);
+      background: rgba(17,24,39,.45);
+      color:#fff;
+      cursor:pointer;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:22px;
+      line-height:1;
+      user-select:none;
+    }
+    .nav.prev{left:10px}
+    .nav.next{right:10px}
+
+    .loadmore-wrap{
+      display:flex;
+      justify-content:center;
+      margin-top:16px;
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero-grid{grid-template-columns:1fr; }
+      .grid{grid-template-columns: repeat(2, 1fr);}
+      h1{font-size:38px}
+      .how{grid-template-columns:1fr}
+    }
+    @media (max-width: 540px){
+      .grid{grid-template-columns: 1fr;}
+      .input{min-width: 100%}
+      nav{display:none}
+      .nav{display:none} /* swipe only on mobile */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="wrap">
+      <header>
+        <div class="brand">
+          <img class="logo-img" src="images/dfca7d53-6679-4ef4-a876-5033942d69a4.jpeg" alt="Khan Bridal Dubai logo">
+          <div>
+            <div style="font-size:15px">Khan Bridal Dubai</div>
+            <div style="font-size:12px; color:var(--muted); font-weight:600">Online Collection</div>
+          </div>
+        </div>
+
+        <nav aria-label="Main">
+          <a href="#collection">Collection</a>
+          <a href="#how">How to Order</a>
+          <a href="#social">Social Media</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="cta-row">
+          <a class="btn" id="igTop" href="#" target="_blank" rel="noopener">Instagram DM</a>
+          <a class="btn primary" id="waTop" href="#" target="_blank" rel="noopener">WhatsApp Order</a>
+        </div>
+      </header>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-grid">
+          <div class="hero-card">
+            <!-- swapped text positions as requested -->
+            <div class="kicker">Explore our exclusive bridal dresses</div>
+            <h1>FREE WORLDWIDE SHIPPING</h1>
+            <p class="lead">
+              Browse our collection and order directly through <b>Instagram DM</b> or <b>WhatsApp</b>.
+              Fast replies, sizing help, and worldwide delivery.
+            </p>
+            <div class="cta-row" style="margin-top:10px; flex-wrap:wrap">
+              <a class="btn primary" href="#collection">Shop the Collection</a>
+              <a class="btn" href="#how">How ordering works</a>
+            </div>
+            <div class="badges">
+              <div class="badge">Custom sizing support</div>
+              <div class="badge">2–8 weeks production</div>
+              <div class="badge">7–14 days delivery</div>
+            </div>
+          </div>
+
+          <div class="hero-media" aria-label="Hero image">
+            <img src="images/IMG_6290.jpeg" alt="Khan Bridal Dubai collection">
+            <div class="media-overlay">
+              <div class="mini">
+                <strong>See something you love?</strong><br/>
+                Send the Product Code to order.
+              </div>
+              <a class="btn primary" href="#collection">View Collection</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="collection">
+      <div class="wrap">
+        <div class="section-title">
+          <div>
+            <h2>Collection</h2>
+            <p>6 main gowns first. Click <b>See more</b> to load all additional gowns.</p>
+          </div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <span class="pill">Order via DM</span>
+            <span class="pill">No online checkout</span>
+          </div>
+        </div>
+
+        <div class="filters" role="search">
+          <input class="input" id="search" placeholder="Search (name, code, tags)..." />
+          <select id="category">
+            <option value="all">All categories</option>
+            <option value="Gowns">Gowns</option>
+            <option value="Veils">Veils</option>
+            <option value="Accessories">Accessories</option>
+          </select>
+          <select id="sort">
+            <option value="featured">Sort: Featured</option>
+            <option value="price-asc">Price: Low → High</option>
+            <option value="price-desc">Price: High → Low</option>
+            <option value="name-asc">Name: A → Z</option>
+          </select>
+        </div>
+
+        <div class="grid" id="grid" aria-live="polite"></div>
+
+        <div class="loadmore-wrap">
+          <button class="btn" id="loadMoreBtn" type="button">See more</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="how">
+      <div class="wrap">
+        <div class="section-title">
+          <div>
+            <h2>How to Order</h2>
+            <p>Here is the process of ordering your wedding dress:</p>
+          </div>
+        </div>
+
+        <div class="how">
+          <div class="step">
+            <div class="step-title">1️⃣ Design &amp; Details</div>
+            <div class="step-text">
+              You choose the dress model you like. If you want any modifications (sleeves, neckline, back, train length, fabric details, etc.),
+              tell us and we’ll confirm what can be customized.
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-title">2️⃣ Measurements</div>
+            <div class="step-text">
+              After confirmation, we send you our size chart. You simply take the measurements with your nearest tailor and send them to us.
+              The dress is made specially to your measurements.
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-title">3️⃣ Payment</div>
+            <div class="step-text">
+              We require <span class="em">50% prepayment</span> to start production. The remaining <span class="em">50%</span> is paid before shipping.
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-title">4️⃣ Production</div>
+            <div class="step-text">
+              Sewing time is <span class="em">2–8 weeks</span>, depending on the design and customization.
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-title">5️⃣ Delivery</div>
+            <div class="step-text">
+              Delivery takes <span class="em">7–14 days</span>. We provide tracking once the dress is shipped.
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-title">Need help choosing?</div>
+            <div class="step-text">
+              Message us your wedding date + budget + style you like, and we’ll recommend the best options.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="social">
+      <div class="wrap">
+        <div class="section-title">
+          <div>
+            <h2>Follow us on social media</h2>
+            <p>New arrivals, videos, and behind-the-scenes.</p>
+          </div>
+        </div>
+
+        <div class="hero-card" style="box-shadow:none">
+          <div style="display:flex; gap:12px; flex-wrap:wrap">
+            <a class="btn" href="https://instagram.com/khangelinlik" target="_blank" rel="noopener">Instagram: khangelinlik</a>
+            <a class="btn" href="https://instagram.com/khanbridaldubai" target="_blank" rel="noopener">Instagram: khanbridaldubai</a>
+            <a class="btn" href="https://threads.net/@khanbridaldubai" target="_blank" rel="noopener">Threads: khanbridaldubai</a>
+            <a class="btn" href="https://pinterest.com/khanbridaldubai" target="_blank" rel="noopener">Pinterest: khanbridaldubai</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="wrap">
+        <div class="section-title">
+          <div>
+            <h2>Contact</h2>
+            <p>We reply quickly during business hours.</p>
+          </div>
+        </div>
+
+        <div class="hero-card" style="box-shadow:none">
+          <div style="display:flex; gap:12px; flex-wrap:wrap">
+            <a class="btn primary" id="waBottom" href="#" target="_blank" rel="noopener">WhatsApp Order</a>
+            <a class="btn" id="igBottom" href="#" target="_blank" rel="noopener">Instagram DM</a>
+            <a class="btn" id="tel" href="#">Call</a>
+            <a class="btn" id="email" href="#">Email</a>
+          </div>
+          <p class="meta" style="margin-top:12px">
+            Tip: For fastest service, send: <b>Product Code</b>, <b>your size</b>, and <b>wedding date</b>.
+          </p>
+        </div>
+
+        <div class="footer">
+          © 2026 Khan Bridal Dubai. All rights reserved.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const BRAND = {
+      instagramHandle: "khanbridaldubai",
+      whatsappNumberE164: "+994773420411",
+      phone: "+994 77 342 04 11",
+      email: "khanbridaldubai@gmail.com"
+    };
+
+    function waLink(message){
+      const num = BRAND.whatsappNumberE164.replace(/\D/g,'');
+      return `https://wa.me/${num}?text=${encodeURIComponent(message)}`;
+    }
+    function igDmLink(){
+      return `https://ig.me/m/${BRAND.instagramHandle}`;
+    }
+
+    // ===== Main 6 gowns (stay first) =====
+    const products = [
+      {
+        code: "KBD001",
+        name: "B E S T  S E L L E R",
+        category: "Gowns",
+        price: 1500,
+        currency: "USD",
+        tags: ["Lace", "2025 Collection", "Couture"],
+        images: [
+          "images/IMG_8915.jpeg","images/IMG_8916.jpeg","images/IMG_8917.jpeg",
+          "images/IMG_8918.jpeg","images/IMG_8919.jpeg","images/IMG_8920.jpeg"
+        ]
+      },
+      {
+        code: "KBD002",
+        name: "L A Y L A Y S",
+        category: "Gowns",
+        price: 1500,
+        currency: "USD",
+        tags: ["Lace", "2025 Collection", "Couture"],
+        images: [
+          "images/IMG_5722.jpeg","images/IMG_5723.jpeg","images/IMG_5724.jpeg",
+          "images/IMG_5725.jpeg","images/IMG_5726.jpeg"
+        ]
+      },
+      {
+        code: "KBD003",
+        name: "P E A R L",
+        category: "Gowns",
+        price: 1500,
+        currency: "USD",
+        tags: ["Lace", "2025 Collection", "Couture"],
+        images: [
+          "images/IMG_7089.jpeg","images/IMG_7090.jpeg","images/IMG_7091.jpeg",
+          "images/IMG_7093.jpeg","images/IMG_7095.jpeg","images/IMG_7097.jpeg"
+        ]
+      },
+      {
+        code: "KBD004",
+        name: "C R Y S T A L",
+        category: "Gowns",
+        price: 1500,
+        currency: "USD",
+        tags: ["Lace", "2025 Collection", "Couture"],
+        images: [
+          "images/IMG_8154.jpeg","images/IMG_8155.jpeg","images/IMG_8156.jpeg",
+          "images/IMG_8157.jpeg","images/IMG_8158.jpeg"
+        ]
+      },
+      {
+        code: "KBD005",
+        name: "S Y M P H O N I E",
+        category: "Gowns",
+        price: 1500,
+        currency: "USD",
+        tags: ["Lace", "2025 Collection", "Couture"],
+        images: [
+          "images/IMG_8677.jpeg","images/IMG_8678.jpeg","images/IMG_8679.jpeg","images/IMG_8680.jpeg"
+        ]
+      },
+      {
+        code: "KBD006",
+        name: "G I L L I E",
+        category: "Gowns",
+        price: 1500,
+        currency: "USD",
+        tags: ["Lace", "2025 Collection", "Couture"],
+        images: [
+          "images/IMG_9044.jpeg","images/IMG_9045.jpeg","images/IMG_9046.jpeg",
+          "images/IMG_9047.jpeg","images/IMG_9048.jpeg"
+        ]
+      }
+    ];
+
+    // ===== Extra gowns (ALL groups you listed) =====
+    const extraGowns = [
+      {
+        code: "KBD007",
+        name: "C L A S S Y",
+        category: "Gowns",
+        price: 1500,
+        currency: "USD",
+        tags: ["Lace", "2025 Collection", "Couture"],
+        images: ["images/IMG_5718.jpeg","images/IMG_5720.jpeg"]
+      },
+      {
+        code: "KBD008",
+        name: "E L E G A N T",
+        category: "Gowns",
+        price: 1500,
+        currency: "USD",
+        tags: ["Lace", "2025 Collection", "Couture"],
+        images: ["images/IMG_6630.jpeg","images/IMG_6631.jpeg","images/IMG_6632.jpeg","images/IMG_6633.jpeg"]
+      },
+      {
+        code: "KBD009",
+        name: "G L A M O U R",
+        category: "Gowns",
+        price: 1500,
+        currency: "USD",
+        tags: ["Lace", "2025 Collection", "Couture"],
+        images: ["images/IMG_6634.jpeg","images/IMG_6635.jpeg","images/IMG_6636.jpeg","images/IMG_6637.jpeg"]
+      },
+      {
+        code: "KBD010",
+        name: "R O Y A L",
+        category: "Gowns",
+        price: 1500,
+        currency: "USD",
+        tags: ["Lace", "2025 Collection", "Couture"],
+        images: ["images/IMG_6638.jpeg","images/IMG_6639.jpeg","images/IMG_6640.jpeg","images/IMG_6641.jpeg"]
+      },
+      {
+        code: "KBD011",
+        name: "P R I N C E S S",
+        category: "Gowns",
+        price: 1500,
+        currency: "USD",
+        tags: ["Lace", "2025 Collection", "Couture"],
+        images: ["images/IMG_6642.jpeg","images/IMG_6643.jpeg","images/IMG_6644.jpeg","images/IMG_6645.jpeg","images/IMG_6646.jpeg"]
+      },
+      {
+        code: "KBD012",
+        name: "S I L K Y",
+        category: "Gowns",
+        price: 1500,
+        currency: "USD",
+        tags: ["Lace", "2025 Collection", "Couture"],
+        images: ["images/IMG_6647.jpeg","images/IMG_6648.jpeg","images/IMG_6649.jpeg","images/IMG_6650.jpeg"]
+      },
+      {
+        code: "KBD013",
+        name: "S O F T",
+        category: "Gowns",
+        price: 1500,
+        currency: "USD",
+        tags: ["Lace", "2025 Collection", "Couture"],
+        images: ["images/IMG_6651.jpeg","images/IMG_6652.jpeg","images/IMG_6653.jpeg"]
+      },
+      {
+        code: "KBD014",
+        name: "D E L I C A T E",
+        category: "Gowns",
+        price: 1500,
+        currency: "USD",
+        tags: ["Lace", "2025 Collection", "Couture"],
+        images: ["images/IMG_6654.jpeg","images/IMG_6655.jpeg","images/IMG_6656.jpeg","images/IMG_6657.jpeg"]
+      },
+      {
+        code: "KBD015",
+        name: "S P A R K L E",
+        category: "Gowns",
+        price: 1500,
+        currency: "USD",
+        tags: ["Lace", "2025 Collection", "Couture"],
+        images: ["images/IMG_6663.jpeg","images/IMG_6664.jpeg","images/IMG_6665.jpeg","images/IMG_6666.jpeg"]
+      },
+      {
+        code: "KBD016",
+        name: "M O D E R N",
+        category: "Gowns",
+        price: 1500,
+        currency: "USD",
+        tags: ["Lace", "2025 Collection", "Couture"],
+        images: ["images/IMG_6668.jpeg","images/IMG_6669.jpeg","images/IMG_6670.jpeg","images/IMG_6671.jpeg","images/IMG_6672.jpeg"]
+      },
+      {
+        code: "KBD017",
+        name: "C L A S S I C",
+        category: "Gowns",
+        price: 1500,
+        currency: "USD",
+        tags: ["Lace", "2025 Collection", "Couture"],
+        images: ["images/IMG_6673.jpeg","images/IMG_6674.jpeg","images/IMG_6675.jpeg","images/IMG_6676.jpeg"]
+      },
+      {
+        code: "KBD018",
+        name: "G R A C E",
+        category: "Gowns",
+        price: 1500,
+        currency: "USD",
+        tags: ["Lace", "2025 Collection", "Couture"],
+        images: ["images/IMG_6677.jpeg","images/IMG_6678.jpeg","images/IMG_6679.jpeg","images/IMG_6680.jpeg","images/IMG_6681.jpeg"]
+      },
+      {
+        code: "KBD019",
+        name: "L U X U R Y",
+        category: "Gowns",
+        price: 1500,
+        currency: "USD",
+        tags: ["Lace", "2025 Collection", "Couture"],
+        images: ["images/IMG_6682.jpeg","images/IMG_6683.jpeg","images/IMG_6684.jpeg","images/IMG_6685.jpeg","images/IMG_6686.jpeg"]
+      },
+      {
+        code: "KBD020",
+        name: "C H I C",
+        category: "Gowns",
+        price: 1500,
+        currency: "USD",
+        tags: ["Lace", "2025 Collection", "Couture"],
+        images: ["images/IMG_6687.jpeg","images/IMG_6688.jpeg","images/IMG_6689.jpeg","images/IMG_6690.jpeg"]
+      },
+      {
+        code: "KBD021",
+        name: "S I G N A T U R E",
+        category: "Gowns",
+        price: 1500,
+        currency: "USD",
+        tags: ["Lace", "2025 Collection", "Couture"],
+        images: ["images/IMG_6691.jpeg","images/IMG_6692.jpeg","images/IMG_6693.jpeg","images/IMG_6694.jpeg","images/IMG_6695.jpeg","images/IMG_6696.jpeg"]
+      },
+      {
+        code: "KBD022",
+        name: "D R E A M",
+        category: "Gowns",
+        price: 1500,
+        currency: "USD",
+        tags: ["Lace", "2025 Collection", "Couture"],
+        images: ["images/IMG_6697.jpeg","images/IMG_6698.jpeg","images/IMG_6699.jpeg","images/IMG_6700.jpeg","images/IMG_6701.jpeg"]
+      },
+      {
+        code: "KBD023",
+        name: "M A J E S T Y",
+        category: "Gowns",
+        price: 1500,
+        currency: "USD",
+        tags: ["Lace", "2025 Collection", "Couture"],
+        images: ["images/IMG_6702.jpeg","images/IMG_6703.jpeg","images/IMG_6704.jpeg","images/IMG_6705.jpeg","images/IMG_6706.jpeg"]
+      },
+      {
+        code: "KBD024",
+        name: "B E A U T Y",
+        category: "Gowns",
+        price: 1500,
+        currency: "USD",
+        tags: ["Lace", "2025 Collection", "Couture"],
+        images: ["images/IMG_6707.jpeg","images/IMG_6708.jpeg","images/IMG_6709.jpeg","images/IMG_6710.jpeg","images/IMG_6711.jpeg","images/IMG_6712.jpeg"]
+      },
+      {
+        code: "KBD025",
+        name: "N E W  A R R I V A L",
+        category: "Gowns",
+        price: 1500,
+        currency: "USD",
+        tags: ["Lace", "2025 Collection", "Couture"],
+        images: ["images/IMG_8777.jpeg","images/IMG_8778.jpeg","images/IMG_8780.jpeg"]
+      },
+      {
+        code: "KBD026",
+        name: "S T A R L I G H T",
+        category: "Gowns",
+        price: 1500,
+        currency: "USD",
+        tags: ["Lace", "2025 Collection", "Couture"],
+        images: ["images/IMG_9006.jpeg","images/IMG_9007.jpeg","images/IMG_9008.jpeg"]
+      },
+      {
+        code: "KBD027",
+        name: "M O O N L I T",
+        category: "Gowns",
+        price: 1500,
+        currency: "USD",
+        tags: ["Lace", "2025 Collection", "Couture"],
+        images: ["images/IMG_9009.jpeg","images/IMG_9010.jpeg","images/IMG_9012.jpeg","images/IMG_9013.jpeg","images/IMG_9014.jpeg"]
+      }
+    ];
+
+    const allProducts = products.concat(extraGowns);
+
+    // ===== Render / Interactions =====
+    const grid = document.getElementById("grid");
+    const search = document.getElementById("search");
+    const category = document.getElementById("category");
+    const sort = document.getElementById("sort");
+    const loadMoreBtn = document.getElementById("loadMoreBtn");
+
+    let visibleCount = 6;   // show 6 first
+    const pageSize = 9;     // load 9 more each click
+
+    function money(p){ return `${p.currency} ${p.price.toLocaleString()}`; }
+
+    function orderMessage(p){
+      return `Hi! I want to order:\n` +
+             `• Product Code: ${p.code}\n` +
+             `• Item: ${p.name}\n` +
+             `• Size: (write size)\n` +
+             `• Customizations: (optional)\n` +
+             `• Wedding date: (optional)\n` +
+             `Thank you!`;
+    }
+
+    function card(p){
+      const wa = waLink(orderMessage(p));
+      const ig = igDmLink();
+      const imgs = (p.images && p.images.length) ? p.images : [];
+
+      const id = `slider-${p.code}`;
+      const slides = imgs.map(src => `
+        <div class="slide"><img src="${src}" alt="${p.name}"></div>
+      `).join("");
+
+      return `
+        <article class="card">
+          <div class="slider" id="${id}" data-index="0">
+            <button class="nav prev" onclick="moveSlide('${id}',-1)" aria-label="Previous">‹</button>
+            <div class="slides">${slides}</div>
+            <button class="nav next" onclick="moveSlide('${id}',1)" aria-label="Next">›</button>
+          </div>
+
+          <div class="card-body">
+            <div class="card-top">
+              <div>
+                <div class="name">${p.name}</div>
+                <div class="meta">${p.category} • <b>Code:</b> ${p.code}</div>
+              </div>
+              <div class="price">${money(p)}</div>
+            </div>
+
+            <div class="meta">
+              ${p.tags.map(t=>`<span class="pill">${t}</span>`).join(" ")}
+            </div>
+
+            <div class="actions">
+              <a class="btn primary" href="${wa}" target="_blank" rel="noopener">WhatsApp Order</a>
+              <a class="btn" href="${ig}" target="_blank" rel="noopener">Instagram DM</a>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    function getFiltered(){
+      const q = (search.value || "").toLowerCase().trim();
+      const cat = category.value;
+
+      let list = allProducts.filter(p=>{
+        const hit =
+          p.name.toLowerCase().includes(q) ||
+          p.code.toLowerCase().includes(q) ||
+          p.category.toLowerCase().includes(q) ||
+          p.tags.join(" ").toLowerCase().includes(q);
+
+        const catOk = (cat === "all") || (p.category === cat);
+        return hit && catOk;
+      });
+
+      const s = sort.value;
+      if(s === "price-asc") list.sort((a,b)=>a.price-b.price);
+      if(s === "price-desc") list.sort((a,b)=>b.price-a.price);
+      if(s === "name-asc") list.sort((a,b)=>a.name.localeCompare(b.name));
+
+      return list;
+    }
+
+    function render(){
+      const list = getFiltered();
+
+      // When searching/filtering, show all results (no paging confusion)
+      const filteringActive =
+        (search.value || "").trim().length > 0 ||
+        category.value !== "all" ||
+        sort.value !== "featured";
+
+      const showCount = filteringActive ? list.length : Math.min(visibleCount, list.length);
+
+      grid.innerHTML = list.slice(0, showCount).map(card).join("");
+      enableSwipe();
+
+      if(filteringActive){
+        loadMoreBtn.style.display = "none";
+      } else {
+        loadMoreBtn.style.display = (showCount < list.length) ? "inline-flex" : "none";
+      }
+    }
+
+    // slider controls
+    function moveSlide(sliderId, direction){
+      const slider = document.getElementById(sliderId);
+      if(!slider) return;
+
+      const slides = slider.querySelector(".slides");
+      const total = slides.children.length;
+
+      let index = parseInt(slider.dataset.index || "0", 10);
+      index = index + direction;
+
+      if(index < 0) index = total - 1;
+      if(index >= total) index = 0;
+
+      slider.dataset.index = index.toString();
+      slides.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    // swipe support
+    function enableSwipe(){
+      document.querySelectorAll(".slider").forEach(slider => {
+        if(slider.dataset.swipeBound === "1") return;
+        slider.dataset.swipeBound = "1";
+
+        let startX = 0;
+
+        slider.addEventListener("touchstart", (e) => {
+          startX = e.touches[0].clientX;
+        }, {passive:true});
+
+        slider.addEventListener("touchend", (e) => {
+          const endX = e.changedTouches[0].clientX;
+          const diff = startX - endX;
+          if(Math.abs(diff) > 40){
+            moveSlide(slider.id, diff > 0 ? 1 : -1);
+          }
+        }, {passive:true});
+      });
+    }
+
+    // Contact links
+    const waTop = document.getElementById("waTop");
+    const waBottom = document.getElementById("waBottom");
+    const igTop = document.getElementById("igTop");
+    const igBottom = document.getElementById("igBottom");
+    const tel = document.getElementById("tel");
+    const email = document.getElementById("email");
+
+    const generalMsg = "Hi! I want to order from your bridal collection. Can you help me?";
+    waTop.href = waLink(generalMsg);
+    waBottom.href = waLink(generalMsg);
+    igTop.href = igDmLink();
+    igBottom.href = igDmLink();
+    tel.href = `tel:${BRAND.phone.replace(/\s/g,'')}`;
+    email.href = `mailto:${BRAND.email}`;
+
+    // Events
+    search.addEventListener("input", () => { visibleCount = 6; render(); });
+    category.addEventListener("change", () => { visibleCount = 6; render(); });
+    sort.addEventListener("change", () => { visibleCount = 6; render(); });
+
+    loadMoreBtn.addEventListener("click", () => {
+      visibleCount += pageSize;
+      render();
+    });
+
+    render();
+  </script>
+</body>
+</html>
