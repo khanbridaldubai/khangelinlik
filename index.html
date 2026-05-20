@@ -103,7 +103,6 @@
       color:var(--muted);
     }
 
-    /* HERO image = 4x3 (as requested) */
     .hero-media{
       border:1px solid var(--line);
       border-radius: var(--radius);
@@ -179,7 +178,6 @@
       color:var(--muted);
     }
 
-    /* How-to text styling (remove heavy bold, only titles bold) */
     .how{
       display:grid;
       grid-template-columns: repeat(3, 1fr);
@@ -203,7 +201,6 @@
       font-size:14px;
     }
 
-    /* ===== Product slider (kept 3x4 for gowns photos) ===== */
     .slider{
       position: relative;
       overflow: hidden;
@@ -254,7 +251,6 @@
       margin-top:16px;
     }
 
-    /* Responsive */
     @media (max-width: 980px){
       .hero-grid{grid-template-columns:1fr; }
       .grid{grid-template-columns: repeat(2, 1fr);}
@@ -265,7 +261,7 @@
       .grid{grid-template-columns: 1fr;}
       .input{min-width: 100%}
       nav{display:none}
-      .nav{display:none} /* swipe only on mobile */
+      .nav{display:none}
     }
   </style>
 </head>
@@ -302,7 +298,6 @@
       <div class="wrap">
         <div class="hero-grid">
           <div class="hero-card">
-            <!-- swapped text positions as requested -->
             <div class="kicker">Explore our exclusive bridal dresses</div>
             <h1>FREE WORLDWIDE SHIPPING</h1>
             <p class="lead">
@@ -353,6 +348,7 @@
           <select id="category">
             <option value="all">All categories</option>
             <option value="Gowns">Gowns</option>
+            <option value="New Arrivals">New Arrivals</option>
             <option value="Veils">Veils</option>
             <option value="Accessories">Accessories</option>
           </select>
@@ -386,7 +382,7 @@
             <div class="step-title">1️⃣ Design &amp; Details</div>
             <div class="step-text">
               You choose the dress model you like. If you want any modifications (sleeves, neckline, back, train length, fabric details, etc.),
-              tell us and we’ll confirm what can be customized.
+              tell us and we'll confirm what can be customized.
             </div>
           </div>
 
@@ -422,7 +418,7 @@
           <div class="step">
             <div class="step-title">Need help choosing?</div>
             <div class="step-text">
-              Message us your wedding date + budget + style you like, and we’ll recommend the best options.
+              Message us your wedding date + budget + style you like, and we'll recommend the best options.
             </div>
           </div>
         </div>
@@ -441,9 +437,10 @@
         <div class="hero-card" style="box-shadow:none">
           <div style="display:flex; gap:12px; flex-wrap:wrap">
             <a class="btn" href="https://instagram.com/khangelinlik" target="_blank" rel="noopener">Instagram: khangelinlik</a>
-            <a class="btn" href="https://instagram.com/khanbridaldubai" target="_blank" rel="noopener">Instagram: khanbridaldubai</a>
+            <a class="btn" href="https://instagram.com/khanbridalcouture" target="_blank" rel="noopener">Instagram: khanbridalcouture</a>
             <a class="btn" href="https://threads.net/@khangelinlik" target="_blank" rel="noopener">Threads: khangelinlik</a>
             <a class="btn" href="https://pinterest.com/khangelinlik" target="_blank" rel="noopener">Pinterest: khangelinlik</a>
+            <a class="btn" href="https://pinterest.com/khancouture" target="_blank" rel="noopener">Pinterest: khancouture</a>
             <a class="btn" href="https://tiktok.com/@khangelinlik" target="_blank" rel="noopener">Tiktok: khangelinlik</a>
           </div>
         </div>
@@ -494,7 +491,6 @@
       return `https://ig.me/m/${BRAND.instagramHandle}`;
     }
 
-    // ===== Main 6 gowns (stay first) =====
     const products = [
       {
         code: "KBD001",
@@ -536,7 +532,7 @@
         code: "KBD004",
         name: "C R Y S T A L",
         category: "Gowns",
-        price: 1400,
+        price: 1600,
         currency: "USD",
         tags: ["Lace", "2025 Collection", "Couture"],
         images: [
@@ -569,7 +565,6 @@
       }
     ];
 
-    // ===== Extra gowns (ALL groups you listed) =====
     const extraGowns = [
       {
         code: "KBD007",
@@ -762,17 +757,30 @@
       }
     ];
 
-    const allProducts = products.concat(extraGowns);
+    // ===== NEW ARRIVALS — add your products here when ready =====
+    const newArrivals = [
+      // Example (uncomment and fill in when you have new products):
+      // {
+      //   code: "KBD028",
+      //   name: "N E W  D R E S S  N A M E",
+      //   category: "New Arrivals",
+      //   price: 1500,
+      //   currency: "USD",
+      //   tags: ["New Arrivals", "2025 Collection", "Couture"],
+      //   images: ["images/YOUR_IMAGE.jpeg"]
+      // }
+    ];
 
-    // ===== Render / Interactions =====
+    const allProducts = products.concat(extraGowns).concat(newArrivals);
+
     const grid = document.getElementById("grid");
     const search = document.getElementById("search");
     const category = document.getElementById("category");
     const sort = document.getElementById("sort");
     const loadMoreBtn = document.getElementById("loadMoreBtn");
 
-    let visibleCount = 6;   // show 6 first
-    const pageSize = 9;     // load 9 more each click
+    let visibleCount = 6;
+    const pageSize = 9;
 
     function money(p){ return `${p.currency} ${p.price.toLocaleString()}`; }
 
@@ -852,7 +860,6 @@
     function render(){
       const list = getFiltered();
 
-      // When searching/filtering, show all results (no paging confusion)
       const filteringActive =
         (search.value || "").trim().length > 0 ||
         category.value !== "all" ||
@@ -870,7 +877,6 @@
       }
     }
 
-    // slider controls
     function moveSlide(sliderId, direction){
       const slider = document.getElementById(sliderId);
       if(!slider) return;
@@ -888,7 +894,6 @@
       slides.style.transform = `translateX(-${index * 100}%)`;
     }
 
-    // swipe support
     function enableSwipe(){
       document.querySelectorAll(".slider").forEach(slider => {
         if(slider.dataset.swipeBound === "1") return;
@@ -910,7 +915,6 @@
       });
     }
 
-    // Contact links
     const waTop = document.getElementById("waTop");
     const waBottom = document.getElementById("waBottom");
     const igTop = document.getElementById("igTop");
@@ -926,7 +930,6 @@
     tel.href = `tel:${BRAND.phone.replace(/\s/g,'')}`;
     email.href = `mailto:${BRAND.email}`;
 
-    // Events
     search.addEventListener("input", () => { visibleCount = 6; render(); });
     category.addEventListener("change", () => { visibleCount = 6; render(); });
     sort.addEventListener("change", () => { visibleCount = 6; render(); });
